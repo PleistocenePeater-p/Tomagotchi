@@ -1,11 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: 'Chakra Petch', sans-serif;
   }
 
 body {
     height: 100vh;
     margin: 0;
-    font-family: 'Chakra Petch', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
