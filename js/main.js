@@ -1,42 +1,57 @@
-//Constants
-
-//App's State (variables)
-class Tomagotchi {
-    constructor(hunger, sleepiness, boredom, age, image, name){
-        this.hunger = hunger;
-        this.sleepiness = sleepiness;
-        this.boredom = boredom;
-        this.age = age;
-        this.image = image;
-        this.name = name;
-    }
-    isHungry(){}
-    //+1 demerit, requests user to buff stat
-    isSleepy(){}
-    //+1 demerit, requests user to buff stat
-    isBored(){}
-    //+1 demerit, requests user to buff stat
+//Make a tamagotchi object
+const digimon = {
+age: 0,
+hunger: 0,
+sleepiness: 0,
+boredom: 0,
+image1: "https://wikimon.net/images/2/27/Koromon_vpet_dv.gif",
+image2: "https://wikimon.net/images/2/28/Agumon_vpet_dv.gif",
+image3: "https://wikimon.net/images/2/27/Koromon_vpet_dv.gif",
+image4: "https://wikimon.net/images/3/31/Metalgreymon_vpet_dv.gif" 
 }
 
-let response {
+//Select the HTML that has the temagitchi image
+const digimonImage = queryselector("tomagotchiImg")
 
-}
-
-
-
-//Cached Elements
-//Event Listeners
-document.getElementById("buttons").addEventListener("click", eventHandler)
-
-//Functions
-init();
-function init() {
-    const koromon = new Tomagotchi {
-        this.hunger = 0;
-
+// The numbers go up
+function counter() {
+//make the digimon stats go up by 1 every x number of seconds
+setInterval(() => {
+  digimon.age +=1
+  digimon.hunger +=1
+  digimon.sleepiness +=1
+  digimon.boredom +=1
+  //console.log things to see what's happening
+  console.log(digimon)
+    }), 5000
+    if (digimon.age < 10) {
+      digimonImage.src(digimon.image1)
     }
 }
 
-function eventHandler(evt){
+//An init to start your timer(s)
+ function init() {
+    counter()
+}
 
+//Add some buttons
+const buttonH = queryselector('buttonH')
+buttonH.addeventlistener('click', lowerHunger)
+
+const buttonS = queryselector('buttonS')
+buttonS.addeventlistener('click', lowerSleepiness)
+
+const buttonB = queryselector('buttonB')
+buttonB.addeventlistener('click', lowerBoredom)
+
+
+//Lower stat functions, each -=1
+function lowerHunger() {
+    digimon.hunger -= 1
+}
+function lowerSleepiness() {
+    digimon.sleepiness -= 1
+}
+function lowerBoredom() {
+    digimon.boredom -= 1
 }
