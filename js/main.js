@@ -11,47 +11,52 @@ image4: "https://wikimon.net/images/3/31/Metalgreymon_vpet_dv.gif"
 }
 
 //Select the HTML that has the temagitchi image
-const digimonImage = queryselector("tomagotchiImg")
+const digimonImage = document.querySelector("tomagotchiImg")
 
 // The numbers go up
 function counter() {
-//make the digimon stats go up by 1 every x number of seconds
-setInterval(() => {
-  digimon.age +=1
-  digimon.hunger +=1
-  digimon.sleepiness +=1
-  digimon.boredom +=1
-  //console.log things to see what's happening
-  console.log(digimon)
+    //make the digimon stats go up by 1 every x number of seconds
+    setInterval(() => {
+        digimon.age +=1
+        digimon.hunger +=1
+        digimon.sleepiness +=1
+        digimon.boredom +=1
+        //console.log things to see what's happening
+        console.log(digimon)
     }), 5000
     if (digimon.age < 10) {
       digimonImage.src(digimon.image1)
     }
+    else if ((10 <= digimon.age < 20)) {
+        digimonImage.src(digimon.image2)
+    }
+    else if ((20 <= digimon.age < 30)) {
+        digimonImage.src(digimon.image3)
+    }
+    else if ((30 <= digimon.age < 40)) {
+        digimonImage.src(digimon.image4)
+    }
 }
-
 //An init to start your timer(s)
  function init() {
     counter()
 }
 
 //Add some buttons
-const buttonH = queryselector('buttonH')
-buttonH.addeventlistener('click', lowerHunger)
-
-const buttonS = queryselector('buttonS')
-buttonS.addeventlistener('click', lowerSleepiness)
-
-const buttonB = queryselector('buttonB')
-buttonB.addeventlistener('click', lowerBoredom)
-
+const buttonH = document.getElementById('buttonH').addEventListener('click', lowerHunger);
+const buttonS = document.getElementById('buttonS').addEventListener('click', lowerSleepiness);
+const buttonB = document.getElementById('buttonB').addEventListener('click', lowerBoredom);
 
 //Lower stat functions, each -=1
 function lowerHunger() {
     digimon.hunger -= 1
+    console.log(digimon.hunger)
 }
 function lowerSleepiness() {
     digimon.sleepiness -= 1
+    console.log(digimon.sleepiness)
 }
 function lowerBoredom() {
     digimon.boredom -= 1
+    console.log(digimon.boredom)
 }
