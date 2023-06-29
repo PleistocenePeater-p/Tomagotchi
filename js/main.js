@@ -6,12 +6,12 @@ sleepiness: 0,
 boredom: 0,
 image1: "https://wikimon.net/images/2/27/Koromon_vpet_dv.gif",
 image2: "https://wikimon.net/images/2/28/Agumon_vpet_dv.gif",
-image3: "https://wikimon.net/images/2/27/Koromon_vpet_dv.gif",
+image3: "https://wikimon.net/images/5/5c/Greymon_vpet_dv.gif",
 image4: "https://wikimon.net/images/3/31/Metalgreymon_vpet_dv.gif" 
 }
 
 //Select the HTML that has the temagitchi image
-const digimonImage = document.getElementById("tomagotchiImg")
+let digimonImage = document.getElementById("tomagotchiImg") 
 const hEl = document.getElementById("hDisplay")
 const sEl = document.getElementById("sDisplay")
 const bEl = document.getElementById("bDisplay")
@@ -26,24 +26,27 @@ function counter() {
         digimon.sleepiness +=1
         digimon.boredom +=1
         //console.log things to see what's happening
-        console.log(digimon)
+        //console.log(digimon)
         hEl.innerText = "Hunger: " + digimon.hunger;
         sEl.innerText = "Sleepiness: " + digimon.sleepiness;
         bEl.innerText = "Boredom: " + digimon.boredom;
         aEl.innerText = "Age: " + digimon.age;
-    }, 5000)
-    if (digimon.age < 10) {
-      digimonImage.src(digimon.image1)
-    }
-    else if ((digimon.age >= 10 && digimon.age < 20)) {
-        digimonImage.src(digimon.image2)
-    }
-    else if ((digimon.age >= 20 && digimon.age < 30)) {
-        digimonImage.src(digimon.image3)
-    }
-    else if ((digimon.age >= 30 && digimon.age < 40)) {
-        digimonImage.src(digimon.image4)
-    }
+        if (digimon.age < 10) {
+                  digimonImage.src = digimon.image1
+                  
+                }
+                else if (digimon.age >= 10 && digimon.age <20) {
+                    digimonImage.src = digimon.image2
+
+                }
+                else if (digimon.age >= 20 && digimon.age <30) {
+                    digimonImage.src = digimon.image3
+                }
+                else if (digimon.age >= 30 ) {
+                    digimonImage.src = digimon.image4
+                }
+    }, 3000)
+
 }
 init();
 //An init to start your timer(s)
