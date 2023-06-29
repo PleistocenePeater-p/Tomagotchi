@@ -3,6 +3,7 @@ const buttonH = document.getElementById('buttonH').addEventListener('click', low
 const buttonS = document.getElementById('buttonS').addEventListener('click', lowerSleepiness);
 const buttonB = document.getElementById('buttonB').addEventListener('click', lowerBoredom);
 
+
 //Digimon object
 const digimon = {
 age: 0,
@@ -16,7 +17,7 @@ image3: "https://wikimon.net/images/5/5c/Greymon_vpet_dv.gif",
 image4: "https://wikimon.net/images/3/31/Metalgreymon_vpet_dv.gif" 
 }
 
-//Select the HTML that has the temagitchi image
+//Cached HTML elements
 let digimonName = document.getElementById("tomagotchi-name")
 let digimonImage = document.getElementById("tomagotchiImg")
 const gEl = document.getElementById("game-over")
@@ -24,6 +25,7 @@ const hEl = document.getElementById("hDisplay")
 const sEl = document.getElementById("sDisplay")
 const bEl = document.getElementById("bDisplay")
 const aEl = document.getElementById("aDisplay")
+let nameForm = document.getElementById("name-form")
 
 function counter() {
     if(digimon.alive === true) {
@@ -67,8 +69,15 @@ init();
 //Initialize interval timer
  function init() {
     counter();
+    rename();
 }
 
+function rename() {
+    nameForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        digimonName.innerText = document.getElementById("inputEl").value;
+    })
+}
 
 
 //Lower stat functions, each -=1
@@ -92,7 +101,7 @@ let refresh = () => {
 
 //Function to stop interval and reset stats
 let digimonDeath = (digimonInterval) => {
-    hEl.innerText = "Oops! Your Digimon has expired."
+    gEl.innerText = "Oops! Your Digimon has expired."
         digimon.age = 0
         digimon.hunger = 0
         digimon.sleepiness = 0

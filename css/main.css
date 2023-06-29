@@ -13,8 +13,26 @@ body {
 }
 
 img {
-  width:100px;
-  height:100px;
-  margin-top: 5px;
-  margin-right: 10px;
+  width:104px;
+  height:136px;
+  
+  /*Animation*/
+  animation-name: jitter;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  
+}
+
+#displays {
+  display: grid;
+  
+}
+@keyframes jitter {
+  from {
+    margin-left: 0px;
+  }
+  to {
+    margin-left: 2px;
+  }
 }
