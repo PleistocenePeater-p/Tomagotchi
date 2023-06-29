@@ -1,9 +1,9 @@
-//Add some buttons
+//Buttons to Feed, Turn off lights, and Play
 const buttonH = document.getElementById('buttonH').addEventListener('click', lowerHunger);
 const buttonS = document.getElementById('buttonS').addEventListener('click', lowerSleepiness);
 const buttonB = document.getElementById('buttonB').addEventListener('click', lowerBoredom);
 
-//Make a tamagotchi object
+//Digimon object
 const digimon = {
 age: 0,
 hunger: 0,
@@ -17,31 +17,33 @@ image4: "https://wikimon.net/images/3/31/Metalgreymon_vpet_dv.gif"
 }
 
 //Select the HTML that has the temagitchi image
-let digimonImage = document.getElementById("tomagotchiImg") 
+let digimonName = document.getElementById("tomagotchi-name")
+let digimonImage = document.getElementById("tomagotchiImg")
+const gEl = document.getElementById("game-over")
 const hEl = document.getElementById("hDisplay")
 const sEl = document.getElementById("sDisplay")
 const bEl = document.getElementById("bDisplay")
 const aEl = document.getElementById("aDisplay")
 
-// The numbers go up
 function counter() {
-    //make the digimon stats go up by 1 every x number of seconds
     if(digimon.alive === true) {
         const digimonInterval = setInterval(() => {
+        
+        //Incremental increase to all stats with each interval
         digimon.age +=1
         digimon.hunger +=1
         digimon.sleepiness +=1
         digimon.boredom +=1
-        //console.log things to see what's happening
-        //console.log(digimon)
+
+        //Displays/updates stats to HTML elements
         hEl.innerText = "Hunger: " + digimon.hunger;
         sEl.innerText = "Sleepiness: " + digimon.sleepiness;
         bEl.innerText = "Boredom: " + digimon.boredom;
         aEl.innerText = "Age: " + digimon.age;
-
+        
         //Sets the sprite for the img tag based on age
         if (digimon.age < 10) {
-          digimonImage.src = digimon.image1
+            digimonImage.src = digimon.image1
         }
         else if (digimon.age >= 10 && digimon.age <20) {
             digimonImage.src = digimon.image2
@@ -54,17 +56,15 @@ function counter() {
         }
 
         //Establishes death condition
-        if (digimon.hunger === 11 || digimon.sleepiness === 11 || digimon.boredom === 11) {
+        if (digimon.hunger === 10 || digimon.sleepiness === 10 || digimon.boredom === 10) {
            digimonDeath(digimonInterval);
         }
-
-        
-    }, 1000)
+        }, 6000)
  
-}
+    }
 }
 init();
-//An init to start your timer(s)
+//Initialize interval timer
  function init() {
     counter();
 }
@@ -90,12 +90,13 @@ let refresh = () => {
     location.reload()
 }
 
+//Function to stop interval and reset stats
 let digimonDeath = (digimonInterval) => {
-    alert("Oh no, you died")
-        digimon.age = 1
-        digimon.hunger = 1
-        digimon.sleepiness = 1
-        digimon.boredom = 1
+    hEl.innerText = "Oops! Your Digimon has expired."
+        digimon.age = 0
+        digimon.hunger = 0
+        digimon.sleepiness = 0
+        digimon.boredom = 0
         digimon.alive = false
     clearInterval(digimonInterval);
 };

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Open+Sans:wght@300&display=swap"
+    rel="stylesheet">
+    <link rel="style" href="main.css" />
     <script defer src="js/main.js"></script>
     <title>Tomagotchi!</title>
 </head>
 <body>
     <main>
-        <h1>V-Pet</h1>
+        <h1 id="tomagotchi-name">V-Pet</h1>
         <section>
             <div id="hDisplay">Hunger: </div>
             <div id="sDisplay">Sleepiness: </div>
@@ -20,7 +25,7 @@
             <img id="tomagotchiImg" src="">
         </div>
 
-        
+        <div id="game-over"></div>
 
         <section id="button-section">
             <button id="buttonH">Feed</button>
